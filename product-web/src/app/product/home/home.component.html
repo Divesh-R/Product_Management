@@ -1,0 +1,28 @@
+<div class="container" style="width: 850px;">
+    <br>
+    <input class="mt-4" (input)="filterProducts(filter.value)" type="search" name="inputsearch"
+        placeholder="Search Product here" id="inputsearch" style="width: 225px;" #filter>
+    <table class="table table-tripped" style="border: 1px salmon;">
+        <thead>
+            <tr class="bg-primary">
+                <th (click)="sortBy('id')" scope="col">ProductID</th>
+                <th (click)="sortBy('name')" scope="col">Name</th>
+                <th (click)="sortBy('type')" scope="col">Type</th>
+                <th (click)="sortBy('brand')" scope="col">Brand</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prd of filteredProducts">
+                <td scope="row">{{prd.id}}</td>
+                <td>{{prd.name}}</td>
+                <td>{{prd.type}}</td>
+                <td>{{prd.brand}}</td>
+                <td> <button [routerLink]="['/product/edit', prd.id]" class="btn btn-primary">Edit</button></td>
+                <td> <button class="btn btn-danger" (click)="delete(prd.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
